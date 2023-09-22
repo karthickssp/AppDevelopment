@@ -1,0 +1,22 @@
+img{
+    margin-top: 5%;
+    height: 80%;
+    width: 80%;
+    border-radius: 5%;
+}
+.imgButton{
+    padding-left: 80px;
+    padding-top: 20px;   
+}
+.imgageButton{
+    font-size: 1.3rem;
+    background-color: rgb(254, 249, 219);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 180px;
+    height: 40px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
