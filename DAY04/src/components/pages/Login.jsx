@@ -1,12 +1,9 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import '../../assets/styles/Login.css'
-import { login } from '../redux/userSlice';
 function Login() 
 {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -14,9 +11,6 @@ function Login()
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(login({
-      user:username
-    }))
     if (username === '' && password === '') 
     {
       setError('Username and Password are required.');

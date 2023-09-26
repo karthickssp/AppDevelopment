@@ -65,7 +65,7 @@ function Register() {
     e.preventDefault();
     if(validateEmail || validatePassword || validatePhoneNumber){
         alert('Account is created successfully. Now Login to your Account');
-        navigate('/');
+        navigate('/login');
     }
   };
 
@@ -178,7 +178,7 @@ function Register() {
         <button type="submit" id="create-account-btn">
           <strong>Create Account</strong>
         </button>
-        <Link to="/">
+        <Link to="/login">
           <button id="login-btn">Login</button>
         </Link>
       </form>
