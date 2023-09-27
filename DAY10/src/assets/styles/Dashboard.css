@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.head-bar-out
+{
+    text-align: center;
+    height: 10vh;
+    display: inline;
+    background-color: #f7faf7
+}
+.head-bar-out1
+{
+    background-color: #f7faf7
+}
+.head-bar{
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: left;
+    margin-top: 20px;
+}
+.motioncard{
+    min-height: 35vh;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    font-family: 'poppins';
+
+}.lbutton {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #7f8d99;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .lbutton:hover {
+    background-color: #0056b3;
+  }
+  
+.card{
+    background-color: #fff;
+    padding: 1.5rem 1.75rem;
+    cursor: pointer;
+    max-width: 300px;
+
+    @media (min-width:480px) {
+        max-width: 480px;
+        padding: 2rem 2.5rem;
+    }
+}

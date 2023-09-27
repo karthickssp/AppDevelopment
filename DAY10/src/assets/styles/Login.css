@@ -1,0 +1,129 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+  margin-top: 20px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  border: none;
+  background: #ececec;
+  box-shadow: 0 0 2em #ececec;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.login-form h2 {
+  margin-bottom: 0rem;
+  color: black;
+  text-align: center;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+label {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  color: black;
+}
+input {
+  padding: 0.8rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  color: hsl(0deg 0% 30%);
+  width: 95%;
+}
+
+#password-btn:hover {
+  cursor: pointer;
+}
+.display {
+  display: flex;
+  position: absolute;
+  top: 55px;
+  left: 470px;
+}
+#forgot-password {
+  font-size: 1rem;
+  cursor: pointer;
+  color: #000;
+}
+#forgot-password:hover {
+  color: red;
+}
+#login-btn {
+  margin-top: 0.5rem;
+  width: 75%;
+  height: 2rem;
+  background-color: lightgreen;
+  font-size: 1.3rem;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#login-btn:hover {
+  background-color: blanchedalmond;
+}
+#create-account-btn {
+  display: flex;
+  margin-top: 1.5rem;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.register{
+  color: red;
+  text-decoration: none;
+}
+.icon {
+  background-image: url("tabicon.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-top: 1.5rem;
+}
+.error {
+  color: red;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+@media screen and (max-width: 960px) {
+  .display {
+    left:475px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .display {
+    left:310px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .display {
+    left:180px;
+  }
+}
+@media screen and (max-width: 380px) {
+  .display {
+    left:260px;
+  }
+}
