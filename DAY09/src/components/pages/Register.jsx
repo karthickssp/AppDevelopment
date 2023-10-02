@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "../../assets/styles/Register.css";
 import { Link, useNavigate } from "react-router-dom";
-import Header from "../layout/Header";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import { toast, ToastContainer } from "react-toastify";
@@ -11,10 +10,16 @@ function Register() {
   const [register, setregister] = useState({
     firstname: "",
     lastname: "",
-    email: "",
     mobile: "",
     dob: "",
+    email: "",
     password: "",
+    confirmpassword: "",
+    gender: "",
+    experience: "",
+    size: "",
+    interest: "",
+    location: "",
   });
   const [showPassword, setShowPassword] = useState(false);
   const [terms, setterms] = useState(false);
@@ -22,7 +27,20 @@ function Register() {
   const [emailError, setEmailError] = useState("");
   const [mobileError, setMobileError] = useState("");
 
-  const { firstname, lastname, email, mobile, dob, password } = register;
+  const {
+    firstname,
+    lastname,
+    mobile,
+    dob,
+    email,
+    password,
+    confirmpassword,
+    gender,
+    experience,
+    size,
+    interest,
+    location,
+  } = register;
 
   const onInputChange = (e) => {
     setregister({ ...register, [e.target.name]: e.target.value });
@@ -73,10 +91,13 @@ function Register() {
     const isPasswordValid = validatePassword(password);
     const isPhoneNumberValid = validatePhoneNumber(mobile);
     if (isEmailValid && isPasswordValid && isPhoneNumberValid && terms) {
-      toast.success("Account is created successfully. Now Login to your Account");
+      toast.success(
+        "Account is created successfully. Now Login to your Account"
+      );
       alert("Account is created successfully. Now Login to your Account");
       navigate("/login");
-    } if(!terms) {
+    }
+    if (!terms) {
       toast.error("Agree terms...");
     }
   };
@@ -87,127 +108,243 @@ function Register() {
 
   return (
     <>
-      <Header />
       <div className="register-page">
         <form className="register-form" onSubmit={(e) => onSubmit(e)}>
-          <h2>PerfectGarden</h2>
-          <div className="icon" />
-
-          <div className="form-group">
-            <label htmlFor="firstname">
-              <strong>First Name:</strong>
+          <div className="register-head">PerfectGarden</div>
+          <div className="register-icon" />
+          <div className="register-form-group">
+            <label className="register-form-label" htmlFor="firstname">
+              First Name:
             </label>
             <input
+              className="register-form-input"
               type="text"
               placeholder="Enter your FirstName"
-              id="firstname"
               name="firstname"
               value={firstname}
               onChange={(e) => onInputChange(e)}
               required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="lastname">
-              <strong>Last Name:</strong>
+          <div className="register-form-group">
+            <label className="register-form-label" htmlFor="lastname">
+              Last Name:
             </label>
             <input
+              className="register-form-input"
               type="text"
               placeholder="Enter your LastName"
-              id="lastname"
               name="lastname"
               value={lastname}
               onChange={(e) => onInputChange(e)}
               required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="email">
-              <strong>Email Address:</strong>
+          <div className="register-form-group">
+            <label className="register-form-label" htmlFor="phoneno">
+              Phone Number:
             </label>
             <input
-              type="text"
-              placeholder="Enter your Email Address (UserName)"
-              id="email"
-              name="email"
-              value={email}
-              onChange={(e) => onInputChange(e)}
-            />
-            {emailError && <div className="error">{emailError}</div>}
-          </div>
-          <div className="form-group">
-            <label htmlFor="phoneno">
-              <strong>Phone Number:</strong>
-            </label>
-            <input
+              className="register-form-input"
               type="number"
               placeholder="Enter your Mobile Number"
-              id="mobile"
               name="mobile"
               value={mobile}
               onChange={(e) => onInputChange(e)}
             />
             {mobileError && <div className="error">{mobileError}</div>}
           </div>
-          <div className="form-group">
-            <label htmlFor="dob">
-              <strong>Date of Birth:</strong>
+          <div className="register-form-group">
+            <label className="register-form-label" htmlFor="dob">
+              Date of Birth:
             </label>
             <input
+              className="register-form-input"
               type="date"
               placeholder="Enter your Date Of Birth"
-              id="dob"
               name="dob"
               value={dob}
               onChange={(e) => onInputChange(e)}
               required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="password">
-              <strong>Password:</strong>
+          <div className="register-form-group">
+            <label className="register-form-label" htmlFor="email">
+              Email Address:
             </label>
             <input
+              className="register-form-input"
+              type="text"
+              placeholder="Enter your Email Address (UserName)"
+              name="email"
+              value={email}
+              onChange={(e) => onInputChange(e)}
+            />
+            {emailError && <div className="error">{emailError}</div>}
+          </div>
+          <div className="register-form-group">
+            <label className="register-form-label" htmlFor="password">
+              Password:
+            </label>
+            <input
+              className="register-form-input"
               type={showPassword ? "text" : "password"}
               placeholder="Create New Password"
-              id="password"
               name="password"
               value={password}
               onChange={(e) => onInputChange(e)}
             />
-            <span className="display-1">
-              <div id="password-btn" onClick={toggleShowPassword}>
-                {showPassword ? (
-                  <RemoveRedEyeOutlinedIcon />
-                ) : (
-                  <VisibilityOffOutlinedIcon />
-                )}
-              </div>
+            <span
+              className="register-password-icon"
+              onClick={toggleShowPassword}
+            >
+              {showPassword ? (
+                <RemoveRedEyeOutlinedIcon />
+              ) : (
+                <VisibilityOffOutlinedIcon />
+              )}
             </span>
             {passwordError && <div className="error">{passwordError}</div>}
           </div>
-          <div className="terms">
-            <label htmlFor="checkbox" id="agree">
+          <div className="register-form-group">
+            <label className="register-form-label" htmlFor="confirmpassword">
+              Confirm Password:
+            </label>
+            <input
+              className="register-form-input"
+              type={showPassword ? "text" : "password"}
+              placeholder="Confirm your password"
+              name="confirmpassword"
+              value={confirmpassword}
+              onChange={(e) => onInputChange(e)}
+            />
+            <span
+              className="register-password-icon"
+              onClick={toggleShowPassword}
+            >
+              {showPassword ? (
+                <RemoveRedEyeOutlinedIcon />
+              ) : (
+                <VisibilityOffOutlinedIcon />
+              )}
+            </span>
+            {passwordError && <div className="error">{passwordError}</div>}
+          </div>
+          <div className="register-form-group">
+            <label className="register-form-label" htmlFor="gender">
+              Gender:
+            </label>
+            <select
+              className="register-form-input"
+              type="text"
+              placeholder="Select your gender"
+              name="gender"
+              value={gender}
+              onChange={(e) => onInputChange(e)}
+              required
+            >
+              <option value="">Select your gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div className="register-form-group">
+            <label className="register-form-label" htmlFor="experience">
+              Experience:
+            </label>
+            <select
+              className="register-form-input"
+              type="text"
+              placeholder="Select your experience"
+              name="experience"
+              value={experience}
+              onChange={(e) => onInputChange(e)}
+              required
+            >
+              <option value="">Select your experience</option>
+              <option value="male">Beginner</option>
+              <option value="female">Intermediate</option>
+              <option value="other">Expert</option>
+            </select>
+          </div>
+          <div className="register-form-group">
+            <label className="register-form-label" htmlFor="size">
+              Garden Size:
+            </label>
+            <select
+              className="register-form-input"
+              type="text"
+              placeholder="Select your Garden type"
+              name="size"
+              value={size}
+              onChange={(e) => onInputChange(e)}
+              required
+            >
+              <option value="">Select your Garden type</option>
+              <option value="male">Small Balcony</option>
+              <option value="female">Medium Backyard</option>
+              <option value="other">Large Garden</option>
+            </select>
+          </div>
+          <div className="register-form-group">
+            <label className="register-form-label" htmlFor="interest">
+              Interest:
+            </label>
+            <select
+              className="register-form-input"
+              type="text"
+              placeholder="Select your Interest"
+              name="interest"
+              value={interest}
+              onChange={(e) => onInputChange(e)}
+              required
+            >
+              <option value="">Select your Interest</option>
+              <option value="male">Flowers</option>
+              <option value="female">Vegetables</option>
+              <option value="other">Herbs</option>
+              <option value="other">Weeds</option>
+            </select>
+          </div>
+          <div className="register-form-group">
+            <label className="register-form-label" htmlFor="location">
+              Location:
+            </label>
+            <input
+              className="register-form-input"
+              type="text"
+              placeholder="Enter your Location"
+              name="location"
+              value={location}
+              onChange={(e) => onInputChange(e)}
+              required
+            />
+          </div>
+          <div className="register-form-group">
+            <label className="register-checkbox-label">
               <input
                 id="checkbox"
+                className="register-form-checkbox"
                 type="checkbox"
                 onChange={() => setterms(!terms)}
               />
-              &nbsp;Agree to our{" "}
-              <Link to="/terms" className="login">
+              <span className="custom-checkbox"></span>
+              &ensp;Agree to our{" "}
+              <Link to="/terms" className="register-form-login">
                 terms and conditions
               </Link>
             </label>
           </div>
-          <button type="submit" id="create-account-btn1">
-            <strong>Create Account</strong>
+          <button type="submit" className="register-form-register-btn">
+            Create Account
           </button>
-          <div id="login-btn1">
-            Already registered! &nbsp;
-            <Link to="/login" className="login">
-              <span className="login">Login</span>
-            </Link>{" "}
-            &nbsp;here.
+          <div className="register-form-already">
+            Already registered!{" "}
+            <Link to="/login" className="register-form-login">
+              Login{" "}
+            </Link>
+            here.
           </div>
         </form>
       </div>

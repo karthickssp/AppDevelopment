@@ -7,7 +7,7 @@
   position: sticky;
   top: 0;
   z-index: 20;
-  background-color: #F7FAF7;
+  background-color: #d3e1e2;
 }
 .nav-container {
   display: flex;
@@ -49,14 +49,7 @@
   background: transparent;
   transition: width 0.7s ease, background-color 0.5s ease;
 }
-.nav-item:hover:after {
-  width: 100%;
-  background: #8afc94;
-}
-.nav-item.active {
-  color: #8afc94;
-  border: 1px solid #8afc94;
-}
+
 .nav-icon {
   display: none;
 }
@@ -96,10 +89,7 @@
     transition: all 0.5s ease;
     z-index: 1;
   }
-  .nav-item.active {
-    color:#8afc94;
-    border: none;
-  }
+  
   .nav-links {
     padding: 1.5rem;
     width: 100%;
@@ -113,6 +103,5 @@
     transform: translate(-100%, 60%);
     font-size: 1.8rem;
     cursor: pointer;
-    color:#8afc94;
   }
 }

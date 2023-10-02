@@ -1,5 +1,3 @@
-import Header from "../layout/Header";
-import Footer from "../layout/Footer";
 import "../../assets/styles/Journal.css";
 import coolcrop from '../../assets/images/coolcrop.png'
 import warmcrop from '../../assets/images/warmcrop.png'
@@ -9,7 +7,6 @@ import ediblew from '../../assets/images/ediblew.png'
 function Journals() {
   return (
     <>
-      <Header />
       <center>
         <h1>Some of published Journals</h1>
       </center>
@@ -47,7 +44,6 @@ function Journals() {
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 }

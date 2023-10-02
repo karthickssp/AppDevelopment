@@ -1,6 +1,4 @@
 import "../../assets/styles/Dashboard.css";
-import Header from "../layout/Header";
-import Footer from "../layout/Footer";
 import { useSelector } from "react-redux";
 import { selectUser } from "../redux/userSlice";
 import Plantveiw from "./Plantveiw";
@@ -14,7 +12,6 @@ const Dashboard = () => {
   const isLoggedIn = user.user && user.user.username;
   return (
     <>
-      <Header />
       <div className="head-bar-out">
         {isLoggedIn ? (
           <div className="head-bar-out1">
@@ -39,7 +36,6 @@ const Dashboard = () => {
           </div>
         )}
       </div>
-      <Footer />
     </>
   );
 };

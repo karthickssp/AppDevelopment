@@ -1,12 +1,9 @@
 import "../../assets/styles/Contact.css";
-import Header from "../layout/Header";
-import Footer from "../layout/Footer";
 import Feedback from "./Feedback";
 import { motion } from "framer-motion";
 function Contactus() {
   return (
     <>
-      <Header />
       <div className="twocontainer">
         <center>
           <div className="contact">
@@ -66,8 +63,6 @@ function Contactus() {
           <Feedback />
         </div>
       </div>
-      
-      <Footer />
     </>
   );
 }

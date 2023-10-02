@@ -1,10 +1,7 @@
-import Header from '../layout/Header'
-import Footer from '../layout/Footer'
 import '../../assets/styles/Privacy.css'
 function Privacy() {
   return (
     <>
-      <Header/>
       <div className="privacy-policy">
       <h2>Privacy Policy for PerfectGarden</h2>
       <p>
@@ -93,7 +90,6 @@ function Privacy() {
         data practices, please contact us at <span style={{color:"red"}}>perfectgarden@gmail.com</span>.
       </p>
       </div>
-      <Footer/>
       </>
   );
 }

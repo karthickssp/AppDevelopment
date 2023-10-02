@@ -1,11 +1,8 @@
 import "../../assets/styles/About.css";
-import Header from "../layout/Header";
-import Footer from "../layout/Footer";
 
 function Aboutus() {
   return (
     <>
-      <Header />
       <div className="about-container">
         <div className="container-about">
           <center>
@@ -64,7 +61,6 @@ function Aboutus() {
           </p>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

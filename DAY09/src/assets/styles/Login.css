@@ -3,97 +3,43 @@
   justify-content: center;
   align-items: center;
   height: 85vh;
-  margin-top: 20px;
+  background: #d3e1e2;
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  padding: 1.5rem;
   border: none;
-  background: #ececec;
-  box-shadow: 0 0 2em #ececec;
-  border-radius: 10px;
+  background: #eef1f6;
+  box-shadow: 0 0 2em #a5dbdd;
+  border-radius: 25px;
   max-width: 600px;
   width: 100%;
+  animation: fadeIn 1s ease-in-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.login-form h2 {
+.login-head {
   margin-bottom: 0rem;
-  color: black;
   text-align: center;
-  font-size: 2rem;
+  font-weight: bold;
+  font-size: 28px;
+  color: #333;
   text-transform: uppercase;
 }
 
-.form-group {
-  position: relative;
-  margin-bottom: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-}
-label {
-  margin-bottom: 0.5rem;
-  font-size: 1.3rem;
-  color: black;
-}
-input {
-  padding: 0.8rem;
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 5px;
-  color: hsl(0deg 0% 30%);
-  width: 95%;
-}
-
-#password-btn:hover {
-  cursor: pointer;
-}
-.display {
-  display: flex;
-  position: absolute;
-  top: 55px;
-  left: 470px;
-}
-#forgot-password {
-  font-size: 1rem;
-  cursor: pointer;
-  color: #000;
-}
-#forgot-password:hover {
-  color: red;
-}
-#login-btn {
-  margin-top: 0.5rem;
-  width: 75%;
-  height: 2rem;
-  background-color: lightgreen;
-  font-size: 1.3rem;
-  color: black;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-#login-btn:hover {
-  background-color: blanchedalmond;
-}
-#create-account-btn {
-  display: flex;
-  margin-top: 1.5rem;
-  font-size: 1.3rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-}
-.register{
-  color: red;
-  text-decoration: none;
-}
-.icon {
+.login-icon {
   background-image: url("tabicon.jpg");
   background-size: contain;
   background-repeat: no-repeat;
@@ -102,28 +48,81 @@ input {
   border-radius: 50%;
   margin-top: 1.5rem;
 }
-.error {
+
+.login-form-group {
+  position: relative;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+}
+.login-form-label {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: black;
+  align-items: flex-start;
+}
+.login-form-input {
+  padding: 0.7rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 20px;
+  color: hsl(0deg 0% 30%);
+  width: 95%;
+  display: flex;
+  align-items: center;
+}
+
+.login-password-icon {
+  display: flex;
+  position: absolute;
+  cursor: pointer;
+  top: 48px;
+  left: 88%;
+}
+.login-form-forget {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: #000;
+}
+.login-form-forget:hover {
+  color: red;
+}
+.login-form-login-btn {
+  margin-top: 1.5rem;
+  width: 60%;
+  padding: 8px;
+  background-color: #a5dbdd;
+  font-size: 1.3rem;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.login-form-login-btn:hover {
+  background-color: #407c87;
+}
+.login-form-no-account {
+  margin-top: 1.5rem;
+  font-size: 1.3rem;
+}
+.login-form-register {
+  color: red;
+  text-decoration: none;
+}
+.login-form-error {
   color: red;
   font-size: 1rem;
-  margin-top: 0.5rem;
 }
-@media screen and (max-width: 960px) {
-  .display {
-    left:475px;
-  }
-}
+
 @media screen and (max-width: 480px) {
-  .display {
-    left:310px;
-  }
-}
-@media screen and (max-width: 320px) {
-  .display {
-    left:180px;
+  .login-password-icon {
+    left: 85%;
   }
 }
 @media screen and (max-width: 380px) {
-  .display {
-    left:260px;
+  .login-password-icon {
+    left: 82%;
   }
 }

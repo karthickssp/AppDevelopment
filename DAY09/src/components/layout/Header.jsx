@@ -15,6 +15,7 @@ function Header() {
   const [click, setClick] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const handleClick = () => setClick(!click);
+  
 
   const handleLogout = () => {
     dispatch(logout());
@@ -35,6 +36,8 @@ function Header() {
           >
             <FontAwesomeIcon icon={showSidebar ? faTimes : faBars} />
           </div>
+          <Sidebar isOpen={showSidebar} onClose={toggleSidebar} />
+
           <div className="nav-logo">PERFECTGARDEN</div>
           <div
             className={`nav-icon ${click ? "active" : ""}`}
@@ -89,9 +92,9 @@ function Header() {
             </li>
             <li className="nav-item">
               {user.user && user.user.username ? (
-                <span className="nav-links" onClick={handleLogout}>
+                <Link className="nav-links" onClick={handleLogout}>
                   LOGOUT
-                </span>
+                </Link>
               ) : (
                 <Link
                   to="/login"
@@ -130,7 +133,6 @@ function Header() {
           </ul>
         </div>
       </nav>
-      <Sidebar isOpen={showSidebar} onClose={toggleSidebar} />
       <ToastContainer
         position="bottom-right"
         autoClose={3000}

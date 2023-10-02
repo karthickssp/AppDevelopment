@@ -1,11 +1,8 @@
-import Header from "../layout/Header";
-import Footer from "../layout/Footer";
 import "../../assets/styles/Terms.css";
 
 function Terms() {
   return (
     <>
-      <Header />
       <div className="container-terms">
         <center>
           <h1>Terms and Conditions</h1>
@@ -65,7 +62,6 @@ function Terms() {
           is at your sole risk.
         </p>
       </div>
-      <Footer />
     </>
   );
 }

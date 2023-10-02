@@ -1,11 +1,8 @@
 import { MDBAccordion, MDBAccordionItem, MDBContainer } from "mdb-react-ui-kit";
-import Header from "../layout/Header";
-import Footer from "../layout/Footer";
 
 export default function Faq() {
   return (
     <>
-      <Header />
       <MDBContainer className="mt-5" style={{ maxWidth: "1000px" }}>
         <MDBAccordion alwaysOpen initialActive={1}>
           <MDBAccordionItem
@@ -59,7 +56,6 @@ export default function Faq() {
           </MDBAccordionItem>
         </MDBAccordion>
       </MDBContainer>
-      <Footer />
     </>
   );
 }

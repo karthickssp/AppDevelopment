@@ -22,7 +22,7 @@ const validatePassword = (password) => {
     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,15}$/;
 
   if (!passwordRegex.test(password)) {
-    return "Password must contain at least one letter, one number, one symbol, and have a length of 8 to 15 characters";
+    return "Password: 8-15 characters, letters, numbers, and symbol.";
   }
 
   return "";
@@ -64,15 +64,15 @@ function Login() {
     <>
       <div className="login-page">
         <form className="login-form" onSubmit={handleSubmit}>
-          <h2>PerfectGarden</h2>
-          <div className="login-form-header" />
-          <div className="icon" />
+          <h1 className="login-head">PerfectGarden</h1>
+          <div className="login-icon" />
 
-          <div className="form-group">
-            <label htmlFor="username">
-              <strong>Username:</strong>{" "}
+          <div className="login-form-group">
+            <label className="login-form-label" htmlFor="username">
+              Username(Email):
             </label>
             <input
+              className="login-form-input"
               type="text"
               placeholder="Enter Your Email ID"
               name="username"
@@ -81,11 +81,12 @@ function Login() {
               id="username"
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="password">
-              <strong>Password:</strong>
+          <div className="login-form-group">
+            <label className="login-form-label" htmlFor="password">
+              Password:
             </label>
             <input
+              className="login-form-input"
               type={showPassword ? "text" : "password"}
               placeholder="Enter your Password"
               name="password"
@@ -93,25 +94,23 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               id="password"
             />
-            <div className="display">
-              <div id="password-btn" onClick={toggleShowPassword}>
-                {showPassword ? (
-                  <RemoveRedEyeOutlinedIcon />
-                ) : (
-                  <VisibilityOffOutlinedIcon />
-                )}
-              </div>
+            <div className="login-password-icon" onClick={toggleShowPassword}>
+              {showPassword ? (
+                <RemoveRedEyeOutlinedIcon />
+              ) : (
+                <VisibilityOffOutlinedIcon />
+              )}
             </div>
-            <h3 id="forgot-password">Forgot Password?</h3>
+            <span className="login-form-forget">Forgot Password?</span>
           </div>
-          {error && <span className="error">{error}</span>}
-          <button type="submit" id="login-btn">
-            Login
+          {error && <span className="login-form-error">{error}</span>}
+          <button type="submit" className="login-form-login-btn">
+            LOGIN
           </button>
-          <div id="create-account-btn">
+          <div className="login-form-no-account">
             New User?&nbsp;
-            <Link to="/register" className="register">
-              <span className="register">Register</span>
+            <Link to="/register" className="login-form-register">
+              REGISTER
             </Link>
             &nbsp; here.
           </div>

@@ -1,5 +1,3 @@
-import Header from "../layout/Header";
-import Footer from "../layout/Footer";
 import "../../assets/styles/Profile.css";
 import { useSelector } from "react-redux";
 import { selectUser } from "../redux/userSlice";
@@ -14,7 +12,6 @@ function Profile() {
 
   return (
     <>
-      <Header />
       <div className="user-details">
         <center>
           <h2>USER DETAILS</h2>
@@ -23,7 +20,7 @@ function Profile() {
           {isLoggedIn ? (
             <>
               <p>
-                <strong>Email:</strong> {user.user.username}
+                <strong>Email:</strong> {username}
               </p>
               <p>
                 <strong>First Name:</strong> {User.user.first_name}
@@ -50,6 +47,7 @@ function Profile() {
               <p>
                 <strong>Created At:</strong> {User.user.created_at}
               </p>
+              <button className="s-button">Setting</button>
             </>
           ) : (
             <center>
@@ -61,7 +59,6 @@ function Profile() {
           )}
         </div>
       </div>
-      <Footer />
     </>
   );
 }

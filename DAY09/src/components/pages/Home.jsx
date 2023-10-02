@@ -1,5 +1,3 @@
-import Header from "../layout/Header";
-import Footer from "../layout/Footer";
 import "../../assets/styles/Home.css";
 import { useSelector } from "react-redux";
 import { selectUser } from "../redux/userSlice";
@@ -7,21 +5,19 @@ import bee from "../../assets/images/bee.png";
 import notes from "../../assets/images/notes.png";
 import question from "../../assets/images/question.png";
 import { Link } from "react-router-dom";
-import guide from '../../assets/images/guide.jpg'
-import fertilizer from '../../assets/images/fertilizer.jpg'
-import maintain from '../../assets/images/maintain.jpg'
-import organise from '../../assets/images/organise.jpg'
-import seeding from '../../assets/images/seeding.jpg'
+import guide from "../../assets/images/guide.jpg";
+import fertilizer from "../../assets/images/fertilizer.jpg";
+import maintain from "../../assets/images/maintain.jpg";
+import organise from "../../assets/images/organise.jpg";
+import seeding from "../../assets/images/seeding.jpg";
 
 function Home() {
   const user = useSelector(selectUser);
   const username =
     user.user && user.user.username ? user.user.username : "Guest";
   return (
-    <>
-      <Header />
-
-      <div className="home">
+    <div className="home-background">
+      <div className="home-header">
         <center>
           <h6>
             Login as <span className="username-color">{username} </span>{" "}
@@ -74,46 +70,28 @@ function Home() {
           </div>
         </div>
       </div>
-      <section className="featured">
+      <section className="product-background">
         <div className="product-list">
           <div className="product-card">
-            <img
-              src={seeding}
-              alt="Seeding"
-              className="product-image"
-            />
+            <img src={seeding} alt="Seeding" className="product-image" />
             <button className="button">Seeding</button>
           </div>
           <div className="product-card">
-            <img
-              src={organise}
-              alt="Organize"
-              className="product-image"
-            />
+            <img src={organise} alt="Organize" className="product-image" />
             <button className="button">Organize</button>
           </div>
           <div className="product-card">
-            <img
-              src={fertilizer}
-              alt="Fertilize"
-              className="product-image"
-            />
+            <img src={fertilizer} alt="Fertilize" className="product-image" />
             <button className="button">Fertilize</button>
           </div>
           <div className="product-card">
-            <img
-              src={guide}
-              alt="Guides"
-              className="product-image"
-            />
-            <Link to = "/guide"><button className="button">Guides</button></Link>
+            <img src={guide} alt="Guides" className="product-image" />
+            <Link to="/guide">
+              <button className="button">Guides</button>
+            </Link>
           </div>
           <div className="product-card">
-            <img
-              src={maintain}
-              alt="Maintain"
-              className="product-image"
-            />
+            <img src={maintain} alt="Maintain" className="product-image" />
             <button className="button">Maintain</button>
           </div>
         </div>
@@ -176,8 +154,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <Footer />
-    </>
+    </div>
   );
 }
 

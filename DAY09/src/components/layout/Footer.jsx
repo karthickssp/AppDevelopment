@@ -27,7 +27,8 @@ export default function Footer() {
     };
   
   return (
-    <MDBFooter bgColor="white" className="text-center text-lg-start text-muted">
+    <div className="footer-background">
+    <MDBFooter className="text-center text-lg-start text-muted">
       <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <div className="me-5 d-none d-lg-block">
           <span>Get connected with us on social networks:</span>
@@ -123,11 +124,11 @@ export default function Footer() {
               </p>
               <p>
                 <MDBIcon color="secondary" icon="phone" className="me-3" /> + 91
-                68234 56788
+                90805 96570
               </p>
               <p>
                 <MDBIcon color="secondary" icon="print" className="me-3" /> + 91
-                89234 56789
+                98765 43210
               </p>
             </MDBCol>
           </MDBRow>
@@ -142,5 +143,6 @@ export default function Footer() {
         <span className="text-reset fw-bold">perfectgarden.com</span>
       </div>
     </MDBFooter>
+    </div>
   );
 }

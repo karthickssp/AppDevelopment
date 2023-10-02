@@ -1,7 +1,9 @@
 import './App.css'
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import Login from './components/pages/Login'
-import Register from './components/pages/Register';
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import Login from './components/account/Login';
+import Register from './components/account/Register';
 import Aboutus from './components/pages/Aboutus';
 import Contactus from './components/pages/Contactus';
 import Home from './components/pages/Home';
@@ -12,6 +14,7 @@ import Privacy from './components/pages/Privacy';
 import Faq from './components/pages/Faq';
 import Profile from './components/pages/Profile';
 import Guide from './components/pages/Guide';
+
 function App() {
   const scrollBehavior = (props) => {
     if (props.history.action === 'PUSH') {
@@ -22,6 +25,7 @@ function App() {
   return (
     <>
      <BrowserRouter getUserConfirmation={scrollBehavior}>
+     <Header/>
         <Routes>
           <Route path = '/' element ={<Home/>}/>
           <Route path = '/login' element ={<Login/>}/>
@@ -36,6 +40,7 @@ function App() {
           <Route path = '/faq' element ={<Faq/>}/>
           <Route path = '/guide' element ={<Guide/>}/>
         </Routes>
+        <Footer/> 
         </BrowserRouter>
     </>
   )

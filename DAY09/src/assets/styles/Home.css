@@ -1,14 +1,17 @@
-.home {
+.home-background{
+  background-color: #d3e1e2;
+}
+.home-header {
   text-align: center;
   padding: 20px;
-  background-color: #f7faf7;
+  background-color: #d3e1e2;
 }
 
-.home h6 {
+.home-header h6 {
   font-size: 1.2rem;
 }
 
-.home h3 {
+.home-header h3 {
   font-size: 2rem;
   margin-top: 10px;
   color: #00796b;
@@ -54,10 +57,9 @@
 .feature-description {
   font-size: 18px;
 }
-.featured {
+.product-background {
   text-align: center;
   padding: 20px;
-  background-color: #fff;
 }
 
 .product-list {
@@ -68,13 +70,10 @@
 }
 
 .product-card {
-  background-color: #f7faf7;
-  padding: 40px;
+  box-shadow: 0 0 2em #a5dbdd;
   border-radius: 8px;
   text-align: center;
   width: calc(33.33% - 20px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
   cursor: pointer;
 }
 
