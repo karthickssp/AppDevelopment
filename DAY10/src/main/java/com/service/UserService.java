@@ -18,18 +18,18 @@ public class UserService {
 	
 	public Optional<List<User>> getAll()   
 	{  
-		return Optional.of(userRepository.findAll());  
+		return Optional.of(userRepository.findAll());
 	}  
 	
 	public Optional<User> getUser(int id)   
 	{  
 		return userRepository.findById(id); 
-	}  
+	}
 	
 	public void deleteUser(int id)   
 	{  
 		userRepository.deleteById(id);  
-	}  
+	}
 	
 	public User saveUser(User u)   
 	{  

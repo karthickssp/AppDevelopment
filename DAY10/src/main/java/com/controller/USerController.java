@@ -22,7 +22,7 @@ import com.service.UserService;
 @RestController
 @RequestMapping("/user")
 
-public class USerController {
+public class UserController {
 	
 	@Autowired
 	UserService userService;
@@ -34,14 +34,14 @@ public class USerController {
 	}  
 
 	@GetMapping("/user/{code}") 
-	public ResponseEntity<Optional<User>> GetUser(@PathVariable("code") int code)
+	public ResponseEntity<Optional<User>> GetUser(@PathVariable int code)
 	{  
 		Optional<User> re = userService.getUser(code); 
 		return ResponseEntity.ok(re);
 	}  
 
 	@DeleteMapping("/user/{code}")  
-	public ResponseEntity<Map<String, Boolean>> DeleteBook(@PathVariable("code") int code)   
+	public ResponseEntity<Map<String, Boolean>> DeleteUser(@PathVariable int code)   
 	{  
 		userService.deleteUser(code);
 		Map<String, Boolean> response = new HashMap<>();
@@ -50,13 +50,13 @@ public class USerController {
 	}  
 
 	@PostMapping("/newuser")  
-	public User SaveBook(@RequestBody User u)   
+	public User SaveUser(@RequestBody User u)   
 	{  
 		return userService.saveUser(u);  
 	}  
 	
 	@PutMapping("/updateuser")  
-	public ResponseEntity<User> Update(@PathVariable Long code,@RequestBody User u)   
+	public ResponseEntity<User> UpdateUser(@PathVariable int code,@RequestBody User u)   
 	{  
 		User ue = userService.updateUser(u);  
 		return ResponseEntity.ok(ue); 
