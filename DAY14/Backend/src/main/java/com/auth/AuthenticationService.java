@@ -1,0 +1,190 @@
+package com.auth;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.config.JwtService;
+import com.entity.Admin;
+import com.entity.Plant;
+import com.entity.User;
+import com.entity.enumerate.Role;
+import com.repository.AdminRepository;
+import com.repository.PlantRepository;
+import com.repository.UserRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class AuthenticationService {
+
+    private final UserRepository repository;
+    private final AdminRepository adminRepo;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
+    private final AuthenticationManager authenticationManager;
+    private final AuthenticationManager userAuthenticationManager;
+
+    public AuthenticationResponse register(RegisterRequest request) {
+        var user = User.builder()
+        .email(request.getEmail())
+        .firstName(request.getFirstName())
+        .lastName(request.getLastName())
+        .mobile(request.getMobile())
+        .Dob(request.getDob())
+        .gender(request.getGender())
+        .experience(request.getExperience())
+        .size(request.getSize())
+        .interest(request.getInterest())
+        .location(request.getLocation())
+        .password(passwordEncoder.encode(request.getPassword()))
+        .role(Role.USER)
+        .build();
+        repository.save(user);
+        var jwtToken = jwtService.generateToken(user);
+
+        return AuthenticationResponse.builder()
+        .token(jwtToken)
+        .build();
+    }
+
+    public AuthenticationResponse authenticate(AuthenticationRequest request) {
+       userAuthenticationManager.authenticate(
+        new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
+       );
+        var user = repository.findById(request.getEmail()).orElseThrow();
+        var jwtToken = jwtService.generateToken(user);
+        return AuthenticationResponse.builder().token(jwtToken).build();
+    }
+
+   public void updatedUser(String email, User updateUser){
+    User user = repository.findByEmail(email);
+    if(!user.toString().isEmpty()){
+
+        user.setFirstName(updateUser.getFirstName());
+        user.setLastName(updateUser.getLastName());
+        user.setMobile(updateUser.getMobile());
+        user.setDob(updateUser.getDob());
+        user.setGender(updateUser.getGender());
+        user.setExperience(updateUser.getExperience());
+        user.setSize(updateUser.getSize());
+        user.setInterest(updateUser.getInterest());
+        user.setLocation(updateUser.getLocation());
+        user.setRole(Role.USER);
+        repository.save(user);
+    }
+   }
+    public void deleteUserByUsername(String email){
+        User user = repository.findByEmail(email);
+        if(user!=null){
+            repository.delete(user);
+        }
+    }
+
+    // Admin Service
+
+
+    public AuthenticationResponse adminregister(AdminRegister request){
+        var admin =  Admin.builder()
+        .adminId(request.getAdminId())
+        .adminpassword(passwordEncoder.encode(request.getAdminpassword()))
+        .adminrole(Role.ADMIN)
+        .build();
+        adminRepo.save(admin);
+        var jwtToken = jwtService.generateToken(admin);
+
+        return AuthenticationResponse.builder()
+        .token(jwtToken)
+
+        .build();
+    }
+
+    public AuthenticationResponse adminAuthenticate(AuthenticationRequest adminrequest){
+        authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(adminrequest.getAdminId(), adminrequest.getAdminpassword())
+        );
+        var admin = adminRepo.findById(adminrequest.getAdminId()).orElseThrow();
+        var adminToken = jwtService.generateToken(admin);
+        return AuthenticationResponse.builder().token(adminToken).build();
+    
+    }
+
+    //Plant Service
+    private final PlantRepository plantRepository;
+
+    
+    public String AddFood(PlantAdd request){
+        var plant = Plant.builder()
+        .commonName(request.getCommonName())
+        .scientificName(request.getScientificName())
+        .description(request.getDescription())
+        .plantFamily(request.getPlantFamily())
+        .plantType(request.getPlantType())
+        .growingConditions(request.getGrowingConditions())
+        .wateringNeeds(request.getWateringNeeds())
+        .fertilization(request.getFertilization())
+        .maintenance(request.getMaintenance())
+        .pestAndDiseaseManagement(request.getPestAndDiseaseManagement())
+        .harvesting(request.getHarvesting())
+        .plantingSeason(request.getPlantingSeason())
+        .harvestingAge(request.getHarvestingAge())
+        .expectedYield(request.getExpectedYield())
+        .companionPlants(request.getCompanionPlants())
+        .varieties(request.getVarieties())
+        .averageRating(request.getAverageRating())
+        .sourceAndOrigin(request.getSourceAndOrigin())
+        .plantImage(request.getPlantImage())
+        .build();
+        plantRepository.save(plant);
+        return "Plant Added Successfully";
+    }
+
+    public Optional<Plant> getPlantById(long id){
+        return plantRepository.findById(id);
+    }
+
+    public List<Plant> getAllPlants(){
+        return plantRepository.findAll();
+    }
+
+    public void updatePlant(long id, Plant updatePlant){
+        Plant plant = plantRepository.findByplantId(id);
+        if(plant!=null){
+        	
+        	plant.setCommonName(updatePlant.getCommonName());
+        	plant.setScientificName(updatePlant.getScientificName());
+        	plant.setDescription(updatePlant.getDescription());
+        	plant.setPlantFamily(updatePlant.getPlantFamily());
+        	plant.setPlantType(updatePlant.getPlantType());
+        	plant.setGrowingConditions(updatePlant.getGrowingConditions());
+        	plant.setWateringNeeds(updatePlant.getWateringNeeds());
+        	plant.setFertilization(updatePlant.getFertilization());
+        	plant.setMaintenance(updatePlant.getMaintenance());
+        	plant.setPestAndDiseaseManagement(updatePlant.getPestAndDiseaseManagement());
+        	plant.setHarvesting(updatePlant.getHarvesting());
+        	plant.setPlantingSeason(updatePlant.getPlantingSeason());
+        	plant.setHarvestingAge(updatePlant.getHarvestingAge());
+        	plant.setExpectedYield(updatePlant.getExpectedYield());
+        	plant.setCompanionPlants(updatePlant.getCompanionPlants());
+        	plant.setVarieties(updatePlant.getVarieties());
+        	plant.setAverageRating(updatePlant.getAverageRating());
+        	plant.setSourceAndOrigin(updatePlant.getSourceAndOrigin());
+        	plant.setPlantImage(updatePlant.getPlantImage());;
+
+            
+            plantRepository.save(plant);
+        }
+    }
+
+    public void deletePlant(long id){
+        Plant plant = plantRepository.findByplantId(id);
+        if(plant!=null){
+        	plantRepository.deleteById(id);
+        }
+    }
+}
